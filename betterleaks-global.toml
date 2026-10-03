@@ -1,0 +1,12 @@
+# Install as ~/.config/betterleaks/global.toml. This extends Betterleaks' built-in
+# rules and skips dependency trees before any secret-detection regexes run.
+title = "Local Betterleaks policy"
+
+prefilter = '''
+matchesAny(attributes["path"], [
+  `(?i)(?:^|/)(?:node_modules|venv|\.venv)(?:/|$)`
+])
+'''
+
+[extend]
+useDefault = true

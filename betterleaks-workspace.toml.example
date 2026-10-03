@@ -1,0 +1,16 @@
+# Copy to <repository>/.betterleaks.local.toml to add workspace-specific policy.
+# The scan script mounts the global policy at this path inside its container.
+
+[extend]
+path = "/config/global.toml"
+
+# Add paths that must not be scanned. Betterleaks cannot dynamically evaluate a
+# repository's .gitignore from a TOML expression, so list any tracked sensitive
+# paths here if they are intentionally ignored by Git (for example, .env).
+#
+# prefilter = '''
+# matchesAny(attributes["path"], [
+#   `(?:^|/)\.env(?:\..*)?$`,
+#   `(?:^|/)private-fixtures(?:/|$)`
+# ])
+# '''
